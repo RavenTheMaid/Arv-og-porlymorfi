@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="5.01/IneritanceProgram.csproj" />
+  <Project Path="Entities/Entities.csproj" />
+</Solution>
