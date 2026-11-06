@@ -16,10 +16,11 @@
             }
             set
             {
-                if (value < 0 )
+                if (value <= 0 )
                 {
                     throw new ArgumentOutOfRangeException(nameof(id), "ID cannot be below 0");
                 }
+                id = value;
             }
         }
         private string name;
@@ -37,6 +38,12 @@
                 }
                 name = value;
             }
+        }
+        public override string ToString()
+        {
+            return $"" +
+                $"Name: {name}\n" +
+                $"ID: {id}";
         }
     }
 }
