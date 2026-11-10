@@ -6,7 +6,12 @@ namespace Entities
 {
     public class Customer : Person
     {
-        public Customer(int id, string name, DateTime becameCustomer, decimal totalMoneySpent) :base(id, name)
+        public Customer
+        (
+            int id, string name, DateTime birthDate, string titleOfCourtesy, //this goes to person class
+            DateTime becameCustomer, decimal totalMoneySpent
+        ) 
+            :base(id, name, birthDate, titleOfCourtesy)
         {
             BecameCustomer = becameCustomer;
             TotalMoneySpent = totalMoneySpent;
@@ -47,7 +52,7 @@ namespace Entities
         public override string ToString()
         {
             return $"" +
-                $"{base.ToString()}\n" +
+                $"{base.ToString()}" +
                 $"Sign up date: {becameCustomer.ToString("dd MM yyyy")}\n" +
                 $"Total spent: {totalMoneySpent}";
         }

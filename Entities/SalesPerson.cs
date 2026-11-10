@@ -1,11 +1,17 @@
 ﻿namespace Entities
 {
-    public class SalesPerson : Person
+    public class SalesPerson : Employee
     {
-        public SalesPerson(int id, string name, decimal yearToDateSales, List<string> itemsForSale) : base(id, name)
+        public SalesPerson
+        (
+            int id, string name, DateTime birthDate, string titleOfCourtesy, //this goes to person class
+            string jobTitle, DateTime dateOfEmployment, decimal anualSalary, //this goes to employee class
+            decimal yearToDateSales, Dictionary<string, decimal> productsForSale
+        ) 
+            :base(id, name, birthDate, titleOfCourtesy, jobTitle, dateOfEmployment, anualSalary)
         {
             YearToDateSales = yearToDateSales;
-            this.itemsForSale = itemsForSale;
+            this.productsForSale = productsForSale;
         }
         private decimal yearToDateSales;
         public decimal YearToDateSales
@@ -26,37 +32,52 @@
                 }
             }
         }
-        private List<string> itemsForSale = new();
+        private Dictionary<string, decimal> productsForSale = new();
 
-        public void AddItemsForSale(string addedItem)
+        public void AddProductForSale(string addedProduct, decimal price)
         {
             bool isThisAlreadyForSale = false;
-            foreach(string item in itemsForSale)
+            foreach(string product in productsForSale.Keys)
             {
-                if(item == addedItem)
+                if(product == addedProduct)
                 {
-                    throw new ArgumentException("This item is already for sale");
                     isThisAlreadyForSale = true;
-                    break;
+                    throw new ArgumentException("This item is already for sale");
                 }
 
             }
             if (isThisAlreadyForSale != true)
             {
-                itemsForSale.Add(addedItem);
+                productsForSale.Add(addedProduct, price);
             }
         }
+        public decimal procentAnualSold()
+        {
+            return Math.Round(yearToDateSales / AnualSalary * 100, 2);
+        }
+
         public override string ToString()
         {
-            string allItems = "Items ";
-            foreach(string item in itemsForSale)
+            string allProducts = "";
+            foreach(string product in productsForSale.Keys)
             {
-                allItems += $"{item}\n";
+                try
+                {
+                productsForSale.TryGetValue(product, out decimal price);
+                allProducts += $"{product}: {price:c2}\n";
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
 
             return $"" +
                 $"{base.ToString()}\n" +
-                $"YtD sales: {yearToDateSales:C2}";
+                $"YtD sales: {yearToDateSales:C2}\n" +
+                $"Procent of anual salary sold: {procentAnualSold()}%\n\n" +
+                $"Products for sale\n" +
+                $"{allProducts}\n";
         }
     }
 }
