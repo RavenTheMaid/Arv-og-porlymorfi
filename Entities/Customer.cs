@@ -8,8 +8,12 @@ namespace Entities
     {
         public Customer
         (
-            int id, string name, DateTime birthDate, string titleOfCourtesy, //this goes to person class
-            DateTime becameCustomer, decimal totalMoneySpent
+            int id, //this goes to person class
+            string name, //this goes to person class
+            DateTime birthDate, //this goes to person class
+            string titleOfCourtesy, //this goes to person class
+            DateTime becameCustomer, 
+            decimal totalMoneySpent
         ) 
             :base(id, name, birthDate, titleOfCourtesy)
         {

@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="5.01/IneritanceProgram.csproj" />
   <Project Path="Entities/Entities.csproj" />
+  <Project Path="SalesUnit/SalesUnit.csproj" Id="1960f069-e456-439d-9906-1c4d033df28e" />
 </Solution>

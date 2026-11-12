@@ -4,14 +4,18 @@
     {
         public SalesPerson
         (
-            int id, string name, DateTime birthDate, string titleOfCourtesy, //this goes to person class
-            string jobTitle, DateTime dateOfEmployment, decimal anualSalary, //this goes to employee class
-            decimal yearToDateSales, Dictionary<string, decimal> productsForSale
+            int id,//this goes to person class
+            string name,//this goes to person class
+            DateTime birthDate, //this goes to person class
+            string titleOfCourtesy,//this goes to person class
+            string jobTitle, //goes to employee class
+            DateTime dateOfEmployment, //goes to employee class
+            decimal anualSalary, //goes to employee class
+            decimal yearToDateSales
         ) 
             :base(id, name, birthDate, titleOfCourtesy, jobTitle, dateOfEmployment, anualSalary)
         {
             YearToDateSales = yearToDateSales;
-            this.productsForSale = productsForSale;
         }
         private decimal yearToDateSales;
         public decimal YearToDateSales

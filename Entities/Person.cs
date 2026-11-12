@@ -4,7 +4,14 @@ namespace Entities
 {
     public class Person
     {
-        public Person(int id, string name, DateTime birthDate, string titleOfCourtesy)
+        public Person
+            (
+                int id, 
+                string name, 
+                DateTime birthDate, 
+                string titleOfCourtesy
+            )
+
         {
 
             ID = id;
